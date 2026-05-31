@@ -5,25 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>سينما زورو - مشاهدة أفلام مباشرة</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Tajawal', 'Segoe UI', Arial, sans-serif;
             background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
             color: #fff;
             min-height: 100vh;
         }
-        
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
+        .container { max-width: 1400px; margin: 0 auto; padding: 20px; }
         .header {
             text-align: center;
             padding: 30px 0;
@@ -31,7 +20,6 @@
             border-radius: 20px;
             margin-bottom: 30px;
         }
-        
         .header h1 {
             font-size: 2.5rem;
             background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
@@ -39,23 +27,14 @@
             background-clip: text;
             color: transparent;
         }
-        
-        .header p {
-            color: rgba(255,255,255,0.7);
-            margin-top: 10px;
-        }
-        
-        .search-section {
-            margin-bottom: 30px;
-        }
-        
+        .header p { color: rgba(255,255,255,0.7); margin-top: 10px; }
+        .search-section { margin-bottom: 30px; }
         .search-box {
             display: flex;
             gap: 10px;
             justify-content: center;
             flex-wrap: wrap;
         }
-        
         .search-box input {
             width: 50%;
             padding: 15px 20px;
@@ -66,11 +45,7 @@
             color: white;
             outline: none;
         }
-        
-        .search-box input::placeholder {
-            color: rgba(255,255,255,0.5);
-        }
-        
+        .search-box input::placeholder { color: rgba(255,255,255,0.5); }
         .search-box button {
             padding: 15px 30px;
             font-size: 1.1rem;
@@ -81,11 +56,7 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        
-        .search-box button:hover {
-            transform: scale(1.05);
-        }
-        
+        .search-box button:hover { transform: scale(1.05); }
         .categories {
             display: flex;
             gap: 15px;
@@ -93,7 +64,6 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
-        
         .cat-btn {
             padding: 8px 20px;
             background: rgba(255,255,255,0.1);
@@ -103,18 +73,15 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
         .cat-btn:hover, .cat-btn.active {
             background: #4ecdc4;
             color: #1a1a2e;
         }
-        
         .loading {
             text-align: center;
             padding: 50px;
             display: none;
         }
-        
         .spinner {
             border: 4px solid rgba(255,255,255,0.3);
             border-top: 4px solid #4ecdc4;
@@ -124,12 +91,10 @@
             animation: spin 1s linear infinite;
             margin: 0 auto 20px;
         }
-        
         @keyframes spin {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        
         .movies-slider {
             overflow-x: auto;
             overflow-y: hidden;
@@ -138,27 +103,10 @@
             padding: 10px 0;
             border-radius: 15px;
         }
-        
-        .movies-slider::-webkit-scrollbar {
-            height: 8px;
-        }
-        
-        .movies-slider::-webkit-scrollbar-track {
-            background: rgba(255,255,255,0.1);
-            border-radius: 10px;
-        }
-        
-        .movies-slider::-webkit-scrollbar-thumb {
-            background: #4ecdc4;
-            border-radius: 10px;
-        }
-        
-        .movies-row {
-            display: inline-flex;
-            gap: 20px;
-            padding: 10px;
-        }
-        
+        .movies-slider::-webkit-scrollbar { height: 8px; }
+        .movies-slider::-webkit-scrollbar-track { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        .movies-slider::-webkit-scrollbar-thumb { background: #4ecdc4; border-radius: 10px; }
+        .movies-row { display: inline-flex; gap: 20px; padding: 10px; }
         .movie-card {
             width: 200px;
             display: inline-block;
@@ -169,54 +117,22 @@
             transition: all 0.3s;
             white-space: normal;
         }
-        
         .movie-card:hover {
             transform: translateY(-8px);
             background: rgba(255,255,255,0.15);
             box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
-        
-        .movie-poster {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-        }
-        
-        .movie-info {
-            padding: 12px;
-        }
-        
-        .movie-title {
-            font-size: 0.9rem;
-            font-weight: bold;
-            margin-bottom: 5px;
-            color: #4ecdc4;
-        }
-        
-        .movie-title-en {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.5);
-        }
-        
-        .movie-year {
-            font-size: 0.7rem;
-            color: rgba(255,255,255,0.6);
-        }
-        
-        .movie-page {
-            display: none;
-            animation: fadeIn 0.5s ease;
-        }
-        
-        .movie-page.active {
-            display: block;
-        }
-        
+        .movie-poster { width: 100%; height: 280px; object-fit: cover; }
+        .movie-info { padding: 12px; }
+        .movie-title { font-size: 0.9rem; font-weight: bold; margin-bottom: 5px; color: #4ecdc4; }
+        .movie-title-en { font-size: 0.7rem; color: rgba(255,255,255,0.5); }
+        .movie-year { font-size: 0.7rem; color: rgba(255,255,255,0.6); }
+        .movie-page { display: none; animation: fadeIn 0.5s ease; }
+        .movie-page.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-        
         .back-btn {
             background: rgba(255,255,255,0.2);
             border: none;
@@ -229,11 +145,7 @@
             align-items: center;
             gap: 8px;
         }
-        
-        .back-btn:hover {
-            background: #4ecdc4;
-        }
-        
+        .back-btn:hover { background: #4ecdc4; }
         .movie-hero {
             display: flex;
             flex-wrap: wrap;
@@ -243,52 +155,19 @@
             padding: 25px;
             margin-bottom: 30px;
         }
-        
-        .poster-container {
-            width: 300px;
-            min-width: 300px;
-        }
-        
-        .poster-container img {
-            width: 100%;
-            border-radius: 15px;
-        }
-        
-        .movie-hero-details {
-            flex: 1;
-        }
-        
-        .movie-hero-title {
-            font-size: 2rem;
-            margin-bottom: 5px;
-            color: #4ecdc4;
-        }
-        
-        .movie-hero-title-en {
-            font-size: 1rem;
-            color: rgba(255,255,255,0.5);
-            margin-bottom: 15px;
-        }
-        
-        .movie-hero-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-        
+        .poster-container { width: 300px; min-width: 300px; }
+        .poster-container img { width: 100%; border-radius: 15px; }
+        .movie-hero-details { flex: 1; }
+        .movie-hero-title { font-size: 2rem; margin-bottom: 5px; color: #4ecdc4; }
+        .movie-hero-title-en { font-size: 1rem; color: rgba(255,255,255,0.5); margin-bottom: 15px; }
+        .movie-hero-info { display: flex; flex-wrap: wrap; gap: 15px; margin-bottom: 20px; }
         .info-badge {
             background: rgba(255,255,255,0.1);
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.9rem;
         }
-        
-        .movie-overview {
-            line-height: 1.7;
-            margin-bottom: 25px;
-        }
-        
+        .movie-overview { line-height: 1.7; margin-bottom: 25px; }
         .watch-btn {
             background: linear-gradient(90deg, #ff6b6b, #4ecdc4);
             border: none;
@@ -300,50 +179,19 @@
             transition: transform 0.2s;
             margin-bottom: 20px;
         }
-        
-        .watch-btn:hover {
-            transform: scale(1.05);
-        }
-        
-        .cast-section {
-            margin-top: 30px;
-        }
-        
-        .cast-title {
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            color: #ff6b6b;
-        }
-        
+        .watch-btn:hover { transform: scale(1.05); }
+        .cast-section { margin-top: 30px; }
+        .cast-title { font-size: 1.3rem; margin-bottom: 15px; color: #ff6b6b; }
         .cast-list {
             display: flex;
             gap: 20px;
             overflow-x: auto;
             padding-bottom: 10px;
         }
-        
-        .cast-item {
-            text-align: center;
-            min-width: 100px;
-        }
-        
-        .cast-img {
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            object-fit: cover;
-        }
-        
-        .cast-name {
-            font-size: 0.8rem;
-            margin-top: 8px;
-        }
-        
-        .cast-character {
-            font-size: 0.65rem;
-            color: #ff6b6b;
-        }
-        
+        .cast-item { text-align: center; min-width: 100px; }
+        .cast-img { width: 80px; height: 80px; border-radius: 50%; object-fit: cover; }
+        .cast-name { font-size: 0.8rem; margin-top: 8px; }
+        .cast-character { font-size: 0.65rem; color: #ff6b6b; }
         .watch-frame {
             display: none;
             margin-top: 30px;
@@ -351,18 +199,13 @@
             border-radius: 20px;
             padding: 20px;
         }
-        
-        .watch-frame.active {
-            display: block;
-        }
-        
+        .watch-frame.active { display: block; }
         .servers-list {
             display: flex;
             gap: 10px;
             flex-wrap: wrap;
             margin-bottom: 20px;
         }
-        
         .server-btn {
             padding: 10px 20px;
             background: rgba(255,255,255,0.1);
@@ -372,12 +215,10 @@
             cursor: pointer;
             transition: all 0.2s;
         }
-        
         .server-btn:hover, .server-btn.active {
             background: #4ecdc4;
             color: #1a1a2e;
         }
-        
         .video-wrapper {
             position: relative;
             padding-bottom: 56.25%;
@@ -385,7 +226,6 @@
             overflow: hidden;
             border-radius: 15px;
         }
-        
         .video-wrapper iframe {
             position: absolute;
             top: 0;
@@ -394,7 +234,6 @@
             height: 100%;
             border: none;
         }
-        
         .fullscreen-btn {
             position: absolute;
             bottom: 10px;
@@ -409,7 +248,6 @@
             font-size: 20px;
             z-index: 10;
         }
-        
         .close-watch {
             background: #ff6b6b;
             border: none;
@@ -420,7 +258,6 @@
             margin-bottom: 15px;
             float: left;
         }
-        
         @media (max-width: 768px) {
             .search-box input { width: 70%; }
             .movie-card { width: 150px; }
@@ -477,8 +314,8 @@
         const TMDB_BASE = "https://api.themoviedb.org/3";
         const IMG_BASE = "https://image.tmdb.org/t/p/w500";
         
-        // ========== رابط السيرفر العمومي ==========
-        const API_URL = "https://began-modes-sociology-pct.trycloudflare.com/api/links?title=";
+        // ========== رابط السيرفر العمومي (تم التحديث) ==========
+        const API_URL = "https://privileges-florist-bingo-diversity.trycloudflare.com/api/links?title=";
         
         let currentVideos = [];
         
@@ -599,12 +436,12 @@
                 const data = await response.json();
                 currentVideos = data.videos || [];
                 
-                if (currentVideos.length === 0) {
-                    currentVideos = [{ server: "⚠️ لا توجد روابط متاحة", link: "#" }];
+                if (currentVideos.length === 0 || (currentVideos.length === 1 && currentVideos[0].link === '#')) {
+                    currentVideos = [{ server: "⚠️ لا توجد روابط متاحة", link: "#", quality: "" }];
                 }
             } catch (error) {
                 console.log("Error:", error);
-                currentVideos = [{ server: "⚠️ خطأ في جلب الروابط", link: "#" }];
+                currentVideos = [{ server: "⚠️ خطأ في جلب الروابط", link: "#", quality: "" }];
             }
         }
         
@@ -612,7 +449,8 @@
             const posterPath = movie.poster_path ? `${IMG_BASE}${movie.poster_path}` : 'https://via.placeholder.com/300x450?text=No+Poster';
             let serversHtml = '';
             currentVideos.forEach((video, idx) => {
-                serversHtml += `<button class="server-btn" onclick="playVideo(${idx})">🎥 ${escapeHtml(video.server)}</button>`;
+                let qualityText = video.quality ? ` (${video.quality})` : '';
+                serversHtml += `<button class="server-btn" onclick="playVideo(${idx})">🎥 ${escapeHtml(video.server)}${qualityText}</button>`;
             });
             document.getElementById('serversList').innerHTML = serversHtml;
             
@@ -678,17 +516,25 @@
                 alert('لا يمكن تشغيل هذا الرابط حالياً');
                 return;
             }
+            
             const videoWrapper = document.getElementById('videoWrapper');
             let embedUrl = video.link;
             
+            // تحويل الروابط إلى صيغة embed
             if (embedUrl.includes('vidspeeds.com') || embedUrl.includes('vidoba.org') || embedUrl.includes('anafast.org')) {
-                if (!embedUrl.includes('embed')) {
+                if (!embedUrl.includes('/embed/')) {
                     embedUrl = embedUrl.replace(/\/[^\/]+\.html$/, '/embed.html');
                 }
-                videoWrapper.innerHTML = `<iframe src="${embedUrl}" allowfullscreen allow="autoplay; encrypted-media"></iframe><button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>`;
-            } else {
-                videoWrapper.innerHTML = `<iframe src="${embedUrl}" allowfullscreen allow="autoplay; encrypted-media"></iframe><button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>`;
             }
+            
+            videoWrapper.innerHTML = `
+                <iframe src="${embedUrl}" 
+                        allowfullscreen 
+                        allow="autoplay; encrypted-media"
+                        referrerpolicy="no-referrer">
+                </iframe>
+                <button class="fullscreen-btn" onclick="toggleFullscreen()">⛶</button>
+            `;
             
             document.querySelectorAll('.server-btn').forEach((btn, i) => {
                 btn.classList.toggle('active', i === index);
